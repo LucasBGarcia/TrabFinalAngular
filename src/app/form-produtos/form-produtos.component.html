@@ -1,0 +1,17 @@
+<h3>Formulario de produtos</h3>
+
+
+<label for='nome'>Nome:</label>
+<input [(ngModel)]="produto.productName" id="nome">
+<br />
+
+<label for='descricao'>Descriçao:</label>
+<input [(ngModel)]="produto.productDescription" id="descricao">
+<br />
+
+
+<button (click)="salvar()">{{botaoAcao}}</button>
+<button (click)="cancelar()">Cancelar</button>
+
+<h4>{{mensagem}}</h4>
+<br />

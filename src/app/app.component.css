@@ -1,0 +1,13 @@
+body {
+
+  height: 100vh;
+  text-align: center;
+  background-image: linear-gradient(rgb(128, 55, 245), rgb(86, 240, 112));
+}
+
+
+li,
+a {
+  margin: auto;
+  color: rgb(0, 0, 0);
+}

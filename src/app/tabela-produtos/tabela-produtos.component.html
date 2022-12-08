@@ -1,0 +1,43 @@
+<div className="body">
+  <h3>{{titulo}}</h3>
+  <div style="margin-bottom:10px">
+    <label>Pesquisar: </label>
+    <input type="text" [(ngModel)]="nomePesquisado">
+  </div>
+  <table *ngIf="lista.length > 0">
+    <tr>
+      <th> id </th>
+      <th> produto </th>
+      <th> descrição </th>
+      <th style="text-align:center" colspan="3">Ação</th>
+    </tr>
+    <!--  | filtroPesquisa:nomePesquisado -->
+    <tr *ngFor="let prod of lista  | filtroPesquisa:nomePesquisado">
+      <td> {{prod._id}} </td>
+      <td> {{prod.productName}} </td>
+      <td> {{prod.productDescription | uppercase}} </td>
+      <td><a routerLink="/edit/{{prod._id}}">Editar</a></td>
+      <td><a routerLink="/tabela" (click)="deletar(prod._id)">Deletar</a></td>
+      <td><a routerLink="/novoEstoque/{{prod._id}}">Add. Estoque</a></td>
+    </tr>
+
+  </table>
+  <table style="margin-top:10px" *ngIf="estoque.length > 0">
+    <tr>
+      <!-- <th> id </th> -->
+      <th> amount </th>
+      <th> id outro </th>
+      <th style="text-align:center" colspan="2">Ação</th>
+    </tr>
+    <!--  | filtroPesquisa:nomePesquisado -->
+    <tr *ngFor="let est of estoque ">
+      <!-- <td> {{prod._id}} </td> -->
+      <td> {{est.amount}} </td>
+      <td> {{est.productId}} </td>
+      <td><a routerLink="/editEstoque/{{est._id}}">Editar</a></td>
+      <td><a routerLink="/tabela" (click)="deletarEstoque(est._id)">Deletar</a></td>
+    </tr>
+
+  </table>
+  <p *ngIf="lista.length <= 0">Não há produtos cadastrados</p>
+</div>
